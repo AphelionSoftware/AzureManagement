@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="AzureVMData" StorageEntityContainer="AzureVMDataStore">
+    <EntitySetMapping Name="vmControls">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.vmControl)">
+        <MappingFragment StoreEntitySet="vmControls">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="vmName" ColumnName="vmName" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="vmServiceName" ColumnName="vmServiceName" />
+          <ScalarProperty Name="AzureSubscription" ColumnName="AzureSubscription" />
+          <ScalarProperty Name="RequestedStoptime" ColumnName="RequestedStoptime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

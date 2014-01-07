@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\AzureVM\AzureVM\AzureVM.Server\DataSources\AzureVMData\vmControls.lsml" Checksum="41E371D30121A85B90619A00AFFA5CA3F31D2C113B3B02A1F0A6E8CCFA9C91CB" />
+    <Document FullPath="C:\AzureVM\AzureVM\AzureVM.Server\Properties\DataSources\AzureVMData.lsml" Checksum="1DB364B1486EE8C96A0DBD42970DB46C901EF5AA6B1C0B4CD0A6DE1770A78246" />
+    <Document FullPath="C:\AzureVM\AzureVM\AzureVM.Server\Properties\Service.lsml" Checksum="FCFBBB1EBAFB29DD52B9E30D823AA1C924A26F638F63D9A249E9C4A2D23216CD" />
+  </Documents>
+</ModelDocumentManifest>

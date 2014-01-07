@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="vmControl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vmName" Type="Edm.String" Nullable="false" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="StartTime" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="RequestedBy" Type="Edm.String" Nullable="false" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="vmServiceName" Type="Edm.String" Nullable="false" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="AzureSubscription" Type="Edm.String" Nullable="false" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="RequestedStoptime" Type="Edm.DateTime" Precision="3" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityContainer Name="AzureVMData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="vmControls" EntityType="LightSwitchApplication.vmControl" />
+  </EntityContainer>
+</Schema>
