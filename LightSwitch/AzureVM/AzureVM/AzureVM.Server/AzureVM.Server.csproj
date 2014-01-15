@@ -30,10 +30,11 @@
     <WCFRIASERVICESSDKPath Condition=" '$(WCFRIASERVICESSDKPath)' == '' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WCFRIAServices\v1.0@InstallPath)</WCFRIASERVICESSDKPath>
     <WCFRIASERVICESSDKPath Condition=" '$(WCFRIASERVICESSDKPath)' == '' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\WCFRIAServices\v1.0@InstallPath)</WCFRIASERVICESSDKPath>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +61,15 @@
     <Reference Include="Microsoft.LightSwitch.Extensions.Server">
       <HintPath>..\_Pvt_Extensions\Microsoft.LightSwitch.Extensions\Server\Reference\Microsoft.LightSwitch.Extensions.Server.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.LightSwitch.Server.SharePoint">
+      <HintPath>$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.Server.SharePoint.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=15.0.0.0">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
@@ -78,6 +88,7 @@
     <Reference Include="System.Data.Entity">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
@@ -192,6 +203,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharePointLaunch.aspx.cs">
+      <DependentUpon>SharePointLaunch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SharePointLaunch.aspx.designer.cs">
+      <DependentUpon>SharePointLaunch.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="Properties\Service.lsml">
@@ -199,6 +217,7 @@
     </LightSwitchModel>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SharePointLaunch.aspx" />
     <Content Include="Web.config" />
     <LightSwitchModel Include="DataSources\AzureVMData\vmControls.lsml" />
     <LightSwitchModel Include="Properties\DataSources\AzureVMData.lsml" />

@@ -10,7 +10,7 @@
       <SaveChangesTo
         EntityContainer="AzureVMData" />
       <DisplayName
-        Value="Azure Vitual Machine Controller" />
+        Value="Azure Virtual Machine Controller" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem

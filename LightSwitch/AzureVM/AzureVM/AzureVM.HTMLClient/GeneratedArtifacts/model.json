@@ -3,1123 +3,6 @@
   "modules":
   [
     {
-      "homeScreen": { "__id": "BrowsevmControls" },
-      "id": "!module",
-      "name": "LightSwitchApplication.AzureVM.HTMLClient",
-      "logo": "/Content/Images/logo.png",
-      "targetPlatform": "MobileWeb",
-      "version": "1.0.0.0",
-      "shell": { "__id": ":HTMLShell" },
-      "theme": { "__id": ":HTMLTheme" },
-      ":@ModuleNamespace": { "namespace": "LightSwitchApplication" },
-      ":@Partial": { "isPrimary": true },
-      "globalItems":
-      [
-        {
-          "id": "DataWorkspace",
-          "name": "DataWorkspace",
-          "members":
-          [
-            {
-              "id": "DataWorkspace/Members[AzureVMData]",
-              "name": "AzureVMData",
-              "entityContainer": { "__id": "AzureVMData" }
-            }
-          ]
-        },
-        {
-          "id": "LightSwitchServiceApplicationGroup",
-          "name": "LightSwitchServiceApplicationGroup"
-        },
-        {
-          "__isEntityType": 1,
-          ":@SummaryProperty": { "property": { "__id": "vmControl/Properties[vmName]" } },
-          "id": "vmControl",
-          "name": "vmControl",
-          "methods":
-          [
-            {
-              "id": "vmControl/Methods[deleteEntity]",
-              "name": "deleteEntity"
-            },
-            {
-              "id": "vmControl/Methods[edit]",
-              "name": "edit"
-            },
-            {
-              "id": "vmControl/Methods[view]",
-              "name": "view"
-            }
-          ],
-          "properties":
-          [
-            {
-              "__isKeyProperty": 1,
-              "id": "vmControl/Properties[ID]",
-              "name": "ID",
-              "isReadOnly": true,
-              "propertyType": { "__id": ":Int32" },
-              ":@Hidden": { },
-              ":@Required": { },
-              ":@NotSearchable": { }
-            },
-            {
-              "id": "vmControl/Properties[vmName]",
-              "name": "vmName",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 50
-              }
-            },
-            {
-              "id": "vmControl/Properties[StartTime]",
-              "name": "StartTime",
-              "propertyType": { "__id": ":DateTime?" },
-              ":@DateTimeConstraint":
-              {
-                "kind": "Unspecified",
-                "precision": 3,
-                "preserveSeconds": true
-              },
-              ":@NotSearchable": { }
-            },
-            {
-              "id": "vmControl/Properties[RequestedBy]",
-              "name": "RequestedBy",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 50
-              }
-            },
-            {
-              "id": "vmControl/Properties[vmServiceName]",
-              "name": "vmServiceName",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 50
-              }
-            },
-            {
-              "id": "vmControl/Properties[AzureSubscription]",
-              "name": "AzureSubscription",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 50
-              }
-            },
-            {
-              "id": "vmControl/Properties[RequestedStoptime]",
-              "name": "RequestedStoptime",
-              "propertyType": { "__id": ":DateTime?" },
-              ":@DateTimeConstraint":
-              {
-                "kind": "Unspecified",
-                "precision": 3,
-                "preserveSeconds": true
-              },
-              ":@NotSearchable": { }
-            }
-          ]
-        },
-        {
-          "id": "AzureVMData",
-          "name": "AzureVMData",
-          ":@Partial": { "isPrimary": true },
-          "entitySets":
-          [
-            {
-              "id": "AzureVMData/Members[vmControls]",
-              "name": "vmControls",
-              "canDelete": true,
-              "canInsert": true,
-              "canUpdate": true,
-              "elementType": { "__id": "vmControl" },
-              "entityType": { "__id": "vmControl" }
-            }
-          ],
-          "queryOperations":
-          [
-            {
-              "id": "AzureVMData/Members[vmControls_Single]",
-              "name": "vmControls_Single",
-              "elementType": { "__id": "vmControl" },
-              "query": { "__id": "AzureVMData/Members[vmControls_Single]" },
-              "returnType": { "__id": "vmControl" },
-              "source":
-              {
-                "member": { "__id": "AzureVMData/Members[vmControls]" }
-              },
-              "parameters":
-              [
-                {
-                  "id": "AzureVMData/Members[vmControls_Single]/Parameters[ID]",
-                  "name": "ID",
-                  "parameterType": { "__id": ":Int32?" }
-                }
-              ]
-            },
-            {
-              "id": "AzureVMData/Members[vmControls_SingleOrDefault]",
-              "name": "vmControls_SingleOrDefault",
-              "elementType": { "__id": "vmControl" },
-              "query": { "__id": "AzureVMData/Members[vmControls_SingleOrDefault]" },
-              "returnType": { "__id": "vmControl" },
-              "source":
-              {
-                "member": { "__id": "AzureVMData/Members[vmControls]" }
-              },
-              "parameters":
-              [
-                {
-                  "id": "AzureVMData/Members[vmControls_SingleOrDefault]/Parameters[ID]",
-                  "name": "ID",
-                  "parameterType": { "__id": ":Int32?" }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "displayName": "Add New Virtual Machine",
-          "id": "AddVirtualMachine",
-          "name": "AddVirtualMachine",
-          "launchMode": "Single",
-          ":@SaveChangesTo":
-          {
-            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
-          },
-          "rootContentItem":
-          {
-            "displayName": "Add New Virtual Machine",
-            "name": "RootContentItem",
-            "kind": "Screen",
-            "view": { "__id": ":Screen" },
-            "childContentItems":
-            [
-              {
-                "displayName": "Tabs",
-                "name": "Tabs",
-                "kind": "Group",
-                "view": { "__id": ":TabPages" },
-                "childContentItems":
-                [
-                  {
-                    "displayName": "Details",
-                    "name": "Details",
-                    "kind": "Tab",
-                    "view": { "__id": ":RowsLayout" },
-                    "childContentItems":
-                    [
-                      {
-                        "displayName": "columns",
-                        "name": "columns",
-                        "kind": "Details",
-                        "view": { "__id": ":ColumnsLayout" },
-                        "dataSource":
-                        {
-                          "member": { "__id": "AddVirtualMachine/Properties[vmControl]" }
-                        },
-                        "childContentItems":
-                        [
-                          {
-                            "displayName": "left",
-                            "name": "left",
-                            "kind": "Group",
-                            "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Virtual Machine Name",
-                                "name": "vmName",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Start Time",
-                                "name": "StartTime",
-                                "isHidden": true,
-                                "kind": "Value",
-                                "view": { "__id": ":DateTimePicker" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[StartTime]" }
-                                }
-                              },
-                              {
-                                "displayName": "Requested By",
-                                "name": "RequestedBy",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
-                                }
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
-                                "value": 200
-                              },
-                              {
-                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
-                                "value": 400
-                              }
-                            ]
-                          },
-                          {
-                            "displayName": "right",
-                            "name": "right",
-                            "kind": "Group",
-                            "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Azure Service Name",
-                                "name": "vmServiceName",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Azure Subscription",
-                                "name": "AzureSubscription",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
-                                }
-                              },
-                              {
-                                "displayName": "Requested Stop Time",
-                                "name": "RequestedStoptime",
-                                "kind": "Value",
-                                "view": { "__id": ":DateTimePicker" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
-                                }
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
-                                "value": 200
-                              },
-                              {
-                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
-                                "value": 400
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "displayName": "Popups",
-                "name": "Popups",
-                "kind": "Group",
-                "view": { "__id": ":DialogPages" }
-              }
-            ],
-            "propertySources":
-            [
-              {
-                "property": { "__id": ":Screen/Properties[ScreenType]" },
-                "value": "Edit"
-              },
-              {
-                "property": { "__id": ":Screen/Properties[ShowAsDialog]" },
-                "value": true
-              }
-            ]
-          },
-          "methods":
-          [
-            {
-              "id": "AddVirtualMachine/Methods[showTab]",
-              "name": "showTab",
-              "parameters":
-              [
-                {
-                  "id": "AddVirtualMachine/Methods[showTab]/Parameters[tabName]",
-                  "name": "tabName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            },
-            {
-              "id": "AddVirtualMachine/Methods[showDialog]",
-              "name": "showDialog",
-              "parameters":
-              [
-                {
-                  "id": "AddVirtualMachine/Methods[showDialog]/Parameters[dialogName]",
-                  "name": "dialogName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            }
-          ],
-          "properties":
-          [
-            {
-              "id": "AddVirtualMachine/Properties[vmControl]",
-              "name": "vmControl",
-              "elementType": { "__id": "vmControl" },
-              "propertyType": { "__id": "vmControl" },
-              ":@IsParameter": { }
-            }
-          ]
-        },
-        {
-          "displayName": "Azure Vitual Machine Controller",
-          "id": "BrowsevmControls",
-          "name": "BrowsevmControls",
-          "launchMode": "Single",
-          ":@SaveChangesTo":
-          {
-            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
-          },
-          "rootContentItem":
-          {
-            "displayName": "Azure Vitual Machine Controller",
-            "name": "RootContentItem",
-            "kind": "Screen",
-            "view": { "__id": ":Screen" },
-            "childContentItems":
-            [
-              {
-                "displayName": "Tabs",
-                "name": "Tabs",
-                "kind": "Group",
-                "view": { "__id": ":TabPages" },
-                "childContentItems":
-                [
-                  {
-                    "displayName": "vm Control List",
-                    "name": "vmControlList",
-                    "kind": "Tab",
-                    "view": { "__id": ":RowsLayout" },
-                    "childContentItems":
-                    [
-                      {
-                        "displayName": "vm Controls",
-                        "name": "vmControl",
-                        "kind": "Collection",
-                        "view": { "__id": ":Table" },
-                        "dataSource":
-                        {
-                          "member": { "__id": "BrowsevmControls/Properties[vmControls]" }
-                        },
-                        "childContentItems":
-                        [
-                          {
-                            "displayName": "vm Control",
-                            "name": "RowTemplate",
-                            "kind": "Details",
-                            "view": { "__id": ":TableRowLayout" },
-                            "dataSource":
-                            {
-                              "links":
-                              [
-                              ]
-                            },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Virtual Machine Name",
-                                "name": "vmName",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Start Time",
-                                "name": "StartTime",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[StartTime]" }
-                                }
-                              },
-                              {
-                                "displayName": "Requested By",
-                                "name": "RequestedBy",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
-                                }
-                              },
-                              {
-                                "displayName": "Azure Service Name",
-                                "name": "vmServiceName",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Azure Subscription",
-                                "name": "AzureSubscription",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
-                                }
-                              },
-                              {
-                                "displayName": "Requested Stop Time",
-                                "name": "RequestedStoptime",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
-                                }
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "commandItems":
-                    [
-                      {
-                        "displayName": "Add New VM",
-                        "name": "AddvmControl",
-                        "kind": "Command",
-                        "view": { "__id": ":CommandBarButton" },
-                        "propertySources":
-                        [
-                          {
-                            "property": { "__id": ":RootControl/Properties[Tap]" },
-                            "source":
-                            {
-                              "target": { "__id": "!module/Methods[showAddVirtualMachine]" },
-                              ":@AssociatedCollection": { "collection": { "__id": "BrowsevmControls/Properties[vmControls]" } },
-                              ":@CreateNewEntity":
-                              {
-                                "targetParameter": { "__id": "!module/Methods[showAddVirtualMachine]/Parameters[vmControl]" }
-                              }
-                            }
-                          },
-                          {
-                            "property": { "__id": ":RootCommand/Properties[Icon]" },
-                            "value": "msls-add"
-                          }
-                        ]
-                      },
-                      {
-                        "displayName": "Edit VM",
-                        "name": "EditvmControl",
-                        "kind": "Command",
-                        "view": { "__id": ":CommandBarButton" },
-                        "propertySources":
-                        [
-                          {
-                            "property": { "__id": ":RootControl/Properties[Tap]" },
-                            "source":
-                            {
-                              "target": { "__id": "!module/Methods[showEditVirtualMachine]" },
-                              ":@AssociatedCollection": { "collection": { "__id": "BrowsevmControls/Properties[vmControls]" } },
-                              "arguments":
-                              [
-                                {
-                                  "parameter": { "__id": "!module/Methods[showEditVirtualMachine]/Parameters[vmControl]" },
-                                  "value":
-                                  {
-                                    "links":
-                                    [
-                                      {
-                                        "member": { "__id": "BrowsevmControls/Properties[vmControls]" }
-                                      },
-                                      {
-                                        "member": { "__id": "CollectionView$vmControl/Properties[selectedItem]" }
-                                      }
-                                    ]
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "property": { "__id": ":RootCommand/Properties[Icon]" },
-                            "value": "msls-edit"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "propertySources":
-                [
-                  {
-                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "displayName": "Popups",
-                "name": "Popups",
-                "kind": "Group",
-                "view": { "__id": ":DialogPages" }
-              }
-            ]
-          },
-          "methods":
-          [
-            {
-              "id": "BrowsevmControls/Methods[showTab]",
-              "name": "showTab",
-              "parameters":
-              [
-                {
-                  "id": "BrowsevmControls/Methods[showTab]/Parameters[tabName]",
-                  "name": "tabName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            },
-            {
-              "id": "BrowsevmControls/Methods[showDialog]",
-              "name": "showDialog",
-              "parameters":
-              [
-                {
-                  "id": "BrowsevmControls/Methods[showDialog]/Parameters[dialogName]",
-                  "name": "dialogName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            }
-          ],
-          "properties":
-          [
-            {
-              "id": "BrowsevmControls/Properties[vmControls]",
-              "name": "vmControls",
-              "pageSize": 45,
-              "elementType": { "__id": "vmControl" },
-              "propertyType": { "__id": "CollectionView$vmControl" },
-              "query":
-              {
-                "id": "BrowsevmControls/Properties[vmControls]/Query",
-                "name": "vmControlsQuery",
-                "elementType": { "__id": "vmControl" },
-                "returnType": { "__id": "vmControl*" },
-                "source":
-                {
-                  "member": { "__id": "AzureVMData/Members[vmControls]" }
-                }
-              },
-              "source":
-              {
-                "target": { "__id": "BrowsevmControls/Properties[vmControls]/Query" }
-              }
-            }
-          ]
-        },
-        {
-          "displayName": "Edit Virtual Machine",
-          "id": "EditVirtualMachine",
-          "name": "EditVirtualMachine",
-          "launchMode": "Single",
-          ":@SaveChangesTo":
-          {
-            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
-          },
-          "rootContentItem":
-          {
-            "displayName": "Root Content Item",
-            "name": "RootContentItem",
-            "kind": "Screen",
-            "view": { "__id": ":Screen" },
-            "childContentItems":
-            [
-              {
-                "displayName": "Tabs",
-                "name": "Tabs",
-                "kind": "Group",
-                "view": { "__id": ":TabPages" },
-                "childContentItems":
-                [
-                  {
-                    "displayName": "Details",
-                    "name": "Details",
-                    "kind": "Tab",
-                    "view": { "__id": ":RowsLayout" },
-                    "childContentItems":
-                    [
-                      {
-                        "displayName": "columns",
-                        "name": "columns",
-                        "kind": "Details",
-                        "view": { "__id": ":ColumnsLayout" },
-                        "dataSource":
-                        {
-                          "member": { "__id": "EditVirtualMachine/Properties[vmControl]" }
-                        },
-                        "childContentItems":
-                        [
-                          {
-                            "displayName": "left",
-                            "name": "left",
-                            "kind": "Group",
-                            "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Virtual Machine Name",
-                                "name": "vmName",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Start Time",
-                                "name": "StartTime",
-                                "isHidden": true,
-                                "kind": "Value",
-                                "view": { "__id": ":DateTimePicker" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[StartTime]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":DateTimePicker/Properties[MinimumYear]" },
-                                    "value": 2014
-                                  }
-                                ]
-                              },
-                              {
-                                "displayName": "Requested By",
-                                "name": "RequestedBy",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
-                                }
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
-                                "value": 200
-                              },
-                              {
-                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
-                                "value": 400
-                              }
-                            ]
-                          },
-                          {
-                            "displayName": "right",
-                            "name": "right",
-                            "kind": "Group",
-                            "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Azure Service Name",
-                                "name": "vmServiceName",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
-                                }
-                              },
-                              {
-                                "displayName": "Azure Subscription",
-                                "name": "AzureSubscription",
-                                "kind": "Value",
-                                "view": { "__id": ":TextBox" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
-                                }
-                              },
-                              {
-                                "displayName": "Requested Stop Time",
-                                "name": "RequestedStoptime",
-                                "kind": "Value",
-                                "view": { "__id": ":DateTimePicker" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":DateTimePicker/Properties[MinimumYear]" },
-                                    "value": 2014
-                                  }
-                                ]
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
-                                "value": 200
-                              },
-                              {
-                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
-                                "value": 400
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "displayName": "Popups",
-                "name": "Popups",
-                "kind": "Group",
-                "view": { "__id": ":DialogPages" }
-              }
-            ],
-            "propertySources":
-            [
-              {
-                "property": { "__id": ":Screen/Properties[ScreenType]" },
-                "value": "Edit"
-              },
-              {
-                "property": { "__id": ":Screen/Properties[ShowAsDialog]" },
-                "value": true
-              }
-            ]
-          },
-          "methods":
-          [
-            {
-              "id": "EditVirtualMachine/Methods[showTab]",
-              "name": "showTab",
-              "parameters":
-              [
-                {
-                  "id": "EditVirtualMachine/Methods[showTab]/Parameters[tabName]",
-                  "name": "tabName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            },
-            {
-              "id": "EditVirtualMachine/Methods[showDialog]",
-              "name": "showDialog",
-              "parameters":
-              [
-                {
-                  "id": "EditVirtualMachine/Methods[showDialog]/Parameters[dialogName]",
-                  "name": "dialogName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            }
-          ],
-          "properties":
-          [
-            {
-              "id": "EditVirtualMachine/Properties[vmControl]",
-              "name": "vmControl",
-              "elementType": { "__id": "vmControl" },
-              "propertyType": { "__id": "vmControl" },
-              ":@IsParameter": { }
-            }
-          ]
-        },
-        {
-          "id": "vmControl*",
-          "name": "vmControl*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "vmControl" }
-        },
-        {
-          "id": "CollectionView$vmControl",
-          "name": "CollectionView$vmControl",
-          "kind": "CollectionView",
-          "elementType": { "__id": "vmControl" },
-          "methods":
-          [
-            {
-              "id": "CollectionView$vmControl/Methods[addNew]",
-              "name": "addNew",
-              "returnType": { "__id": "vmControl" }
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[addAndEditNew]",
-              "name": "addAndEditNew",
-              "returnType": { "__id": "vmControl" }
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[editSelected]",
-              "name": "editSelected"
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[deleteSelected]",
-              "name": "deleteSelected"
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[removeSelected]",
-              "name": "removeSelected"
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[refresh]",
-              "name": "refresh"
-            },
-            {
-              "id": "CollectionView$vmControl/Methods[viewSelected]",
-              "name": "viewSelected"
-            }
-          ],
-          "properties":
-          [
-            {
-              "id": "CollectionView$vmControl/Properties[selectedItem]",
-              "name": "selectedItem",
-              "propertyType": { "__id": "vmControl" }
-            }
-          ]
-        }
-      ],
-      "methods":
-      [
-        {
-          "id": "!module/Methods[showAddVirtualMachine]",
-          "name": "showAddVirtualMachine",
-          ":@ShowScreenMethod": { "targetScreen": { "__id": "AddVirtualMachine" } },
-          "parameters":
-          [
-            {
-              "id": "!module/Methods[showAddVirtualMachine]/Parameters[vmControl]",
-              "name": "vmControl",
-              "parameterType": { "__id": "vmControl" }
-            }
-          ]
-        },
-        {
-          "id": "!module/Methods[showBrowsevmControls]",
-          "name": "showBrowsevmControls",
-          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowsevmControls" } }
-        },
-        {
-          "id": "!module/Methods[showEditVirtualMachine]",
-          "name": "showEditVirtualMachine",
-          ":@ShowScreenMethod": { "targetScreen": { "__id": "EditVirtualMachine" } },
-          "parameters":
-          [
-            {
-              "id": "!module/Methods[showEditVirtualMachine]/Parameters[vmControl]",
-              "name": "vmControl",
-              "parameterType": { "__id": "vmControl" }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "Microsoft.LightSwitch.Extensions:!module",
-      "name": "Microsoft.LightSwitch.Extensions",
-      "globalItems":
-      [
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:EmailAddress",
-          "name": "EmailAddress",
-          "underlyingType": { "__id": ":String" },
-          "Microsoft.LightSwitch.Extensions:@EmailAddressValidation": { "domainRequired": true }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Image",
-          "name": "Image",
-          "underlyingType": { "__id": ":Binary" }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Money",
-          "name": "Money",
-          "underlyingType": { "__id": ":Decimal" }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber",
-          "name": "PhoneNumber",
-          "underlyingType": { "__id": ":String" },
-          "Microsoft.LightSwitch.Extensions:@PhoneNumberValidation": { "formats": "C (AAA) NNN-NNNN;C (AAA) NNNNNNN;CAAANNNNNNN;(AAA) NNN-NNNN;(AAA) NNNNNNN;AAANNNNNNN;NNN-NNNN;NNNNNNN" }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Percent",
-          "name": "Percent",
-          "underlyingType": { "__id": ":Decimal" },
-          "Microsoft.LightSwitch.Extensions:@FormatParameter": { "decimalDigits": 2 },
-          ":@DecimalConstraint":
-          {
-            "scale": 9
-          }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:WebAddress",
-          "name": "WebAddress",
-          "underlyingType": { "__id": ":String" },
-          "Microsoft.LightSwitch.Extensions:@WebAddressValidation": { }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:EmailAddress*",
-          "name": "EmailAddress*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:EmailAddress?",
-          "name": "EmailAddress?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:EmailAddress?*",
-          "name": "EmailAddress?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress?" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Image*",
-          "name": "Image*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Image" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Image?",
-          "name": "Image?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Image" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Image?*",
-          "name": "Image?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Image?" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Money*",
-          "name": "Money*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Money" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Money?",
-          "name": "Money?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Money" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Money?*",
-          "name": "Money?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Money?" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber*",
-          "name": "PhoneNumber*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber?",
-          "name": "PhoneNumber?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber?*",
-          "name": "PhoneNumber?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber?" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Percent*",
-          "name": "Percent*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Percent" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:Percent?",
-          "name": "Percent?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Percent" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:Percent?*",
-          "name": "Percent?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Percent?" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:WebAddress*",
-          "name": "WebAddress*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress" }
-        },
-        {
-          "__isNullableType": 1,
-          "id": "Microsoft.LightSwitch.Extensions:WebAddress?",
-          "name": "WebAddress?",
-          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress" }
-        },
-        {
-          "id": "Microsoft.LightSwitch.Extensions:WebAddress?*",
-          "name": "WebAddress?*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress?" }
-        }
-      ]
-    },
-    {
       "id": ":!module",
       "name": "Microsoft.LightSwitch.MobileWeb",
       "targetPlatform": "MobileWeb",
@@ -2251,163 +1134,61 @@
       ]
     },
     {
+      "id": "Microsoft.LightSwitch.SharePoint.MobileWeb:!module",
+      "name": "Microsoft.LightSwitch.SharePoint.MobileWeb",
+      "targetPlatform": "MobileWeb",
+      "globalItems":
+      [
+        {
+          "id": "Microsoft.LightSwitch.SharePoint.MobileWeb:PersonViewer",
+          "name": "PersonViewer",
+          "attachedLabelSupport": "DisplayedByContainer",
+          "isViewer": true,
+          "supportedContentItemKind": "Value",
+          "baseControl": { "__id": ":RootReadOnlyValueControl" },
+          "properties":
+          [
+            {
+              "id": "Microsoft.LightSwitch.SharePoint.MobileWeb:PersonViewer/Properties[DisplayMode]",
+              "name": "DisplayMode",
+              "propertyType": { "__id": ":String" },
+              "defaultValueSource":
+              {
+                "value": "NameOnly"
+              }
+            }
+          ]
+        },
+        {
+          "id": "Microsoft.LightSwitch.SharePoint.MobileWeb:PersonPicker",
+          "name": "PersonPicker",
+          "attachedLabelSupport": "DisplayedByContainer",
+          "supportedContentItemKind": "Value",
+          "baseControl": { "__id": ":RootValueControl" },
+          "properties":
+          [
+            {
+              "id": "Microsoft.LightSwitch.SharePoint.MobileWeb:PersonPicker/Properties[ChoiceDisplayMode]",
+              "name": "ChoiceDisplayMode",
+              "propertyType": { "__id": ":String" },
+              "defaultValueSource":
+              {
+                "value": "NameOnly"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Microsoft.LightSwitch.SharePoint:!module",
+      "name": "Microsoft.LightSwitch.SharePoint"
+    },
+    {
       "id": ":!module",
       "name": "Microsoft.LightSwitch",
       "globalItems":
       [
-        {
-          "id": ":RelativeDates",
-          "name": "RelativeDates",
-          "globalValues":
-          [
-            {
-              "id": ":RelativeDates/GlobalValues[Now]",
-              "name": "Now",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[Today]",
-              "name": "Today",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[EndOfDay]",
-              "name": "EndOfDay",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[StartOfWeek]",
-              "name": "StartOfWeek",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[EndOfWeek]",
-              "name": "EndOfWeek",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[StartOfMonth]",
-              "name": "StartOfMonth",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[EndOfMonth]",
-              "name": "EndOfMonth",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[StartOfQuarter]",
-              "name": "StartOfQuarter",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[EndOfQuarter]",
-              "name": "EndOfQuarter",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[StartOfYear]",
-              "name": "StartOfYear",
-              "returnType": { "__id": ":DateTime" }
-            },
-            {
-              "id": ":RelativeDates/GlobalValues[EndOfYear]",
-              "name": "EndOfYear",
-              "returnType": { "__id": ":DateTime" }
-            }
-          ]
-        },
-        {
-          "id": ":RelativeDateTimeOffsetDates",
-          "name": "RelativeDateTimeOffsetDates",
-          "globalValues":
-          [
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[Now]",
-              "name": "Now",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[Today]",
-              "name": "Today",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfDay]",
-              "name": "EndOfDay",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfWeek]",
-              "name": "StartOfWeek",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfWeek]",
-              "name": "EndOfWeek",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfMonth]",
-              "name": "StartOfMonth",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfMonth]",
-              "name": "EndOfMonth",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfQuarter]",
-              "name": "StartOfQuarter",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfQuarter]",
-              "name": "EndOfQuarter",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfYear]",
-              "name": "StartOfYear",
-              "returnType": { "__id": ":DateTimeOffset" }
-            },
-            {
-              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfYear]",
-              "name": "EndOfYear",
-              "returnType": { "__id": ":DateTimeOffset" }
-            }
-          ]
-        },
-        {
-          "id": ":WellKnownPeople",
-          "name": "WellKnownPeople",
-          "globalValues":
-          [
-            {
-              "id": ":WellKnownPeople/GlobalValues[CurrentUser]",
-              "name": "CurrentUser",
-              "returnType": { "__id": ":Person" }
-            },
-            {
-              "id": ":WellKnownPeople/GlobalValues[AnonymousUser]",
-              "name": "AnonymousUser",
-              "returnType": { "__id": ":Person" }
-            }
-          ]
-        },
-        {
-          "__isSemanticType": 1,
-          "id": ":Date",
-          "name": "Date",
-          "underlyingType": { "__id": ":DateTime" }
-        },
-        {
-          "__isSemanticType": 1,
-          "id": ":Person",
-          "name": "Person",
-          "underlyingType": { "__id": ":String" }
-        },
         {
           "__isPrimitiveType": 1,
           "id": ":Binary",
@@ -3076,6 +1857,1273 @@
           "name": "Person?*",
           "kind": "Enumerable",
           "elementType": { "__id": ":Person?" }
+        },
+        {
+          "id": ":RelativeDates",
+          "name": "RelativeDates",
+          "globalValues":
+          [
+            {
+              "id": ":RelativeDates/GlobalValues[Now]",
+              "name": "Now",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[Today]",
+              "name": "Today",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[EndOfDay]",
+              "name": "EndOfDay",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[StartOfWeek]",
+              "name": "StartOfWeek",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[EndOfWeek]",
+              "name": "EndOfWeek",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[StartOfMonth]",
+              "name": "StartOfMonth",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[EndOfMonth]",
+              "name": "EndOfMonth",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[StartOfQuarter]",
+              "name": "StartOfQuarter",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[EndOfQuarter]",
+              "name": "EndOfQuarter",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[StartOfYear]",
+              "name": "StartOfYear",
+              "returnType": { "__id": ":DateTime" }
+            },
+            {
+              "id": ":RelativeDates/GlobalValues[EndOfYear]",
+              "name": "EndOfYear",
+              "returnType": { "__id": ":DateTime" }
+            }
+          ]
+        },
+        {
+          "id": ":RelativeDateTimeOffsetDates",
+          "name": "RelativeDateTimeOffsetDates",
+          "globalValues":
+          [
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[Now]",
+              "name": "Now",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[Today]",
+              "name": "Today",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfDay]",
+              "name": "EndOfDay",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfWeek]",
+              "name": "StartOfWeek",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfWeek]",
+              "name": "EndOfWeek",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfMonth]",
+              "name": "StartOfMonth",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfMonth]",
+              "name": "EndOfMonth",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfQuarter]",
+              "name": "StartOfQuarter",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfQuarter]",
+              "name": "EndOfQuarter",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[StartOfYear]",
+              "name": "StartOfYear",
+              "returnType": { "__id": ":DateTimeOffset" }
+            },
+            {
+              "id": ":RelativeDateTimeOffsetDates/GlobalValues[EndOfYear]",
+              "name": "EndOfYear",
+              "returnType": { "__id": ":DateTimeOffset" }
+            }
+          ]
+        },
+        {
+          "id": ":WellKnownPeople",
+          "name": "WellKnownPeople",
+          "globalValues":
+          [
+            {
+              "id": ":WellKnownPeople/GlobalValues[CurrentUser]",
+              "name": "CurrentUser",
+              "returnType": { "__id": ":Person" }
+            },
+            {
+              "id": ":WellKnownPeople/GlobalValues[AnonymousUser]",
+              "name": "AnonymousUser",
+              "returnType": { "__id": ":Person" }
+            }
+          ]
+        },
+        {
+          "__isSemanticType": 1,
+          "id": ":Date",
+          "name": "Date",
+          "underlyingType": { "__id": ":DateTime" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": ":Person",
+          "name": "Person",
+          "underlyingType": { "__id": ":String" }
+        }
+      ]
+    },
+    {
+      "id": "Microsoft.LightSwitch.Extensions:!module",
+      "name": "Microsoft.LightSwitch.Extensions",
+      "globalItems":
+      [
+        {
+          "id": "Microsoft.LightSwitch.Extensions:EmailAddress*",
+          "name": "EmailAddress*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:EmailAddress?",
+          "name": "EmailAddress?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:EmailAddress?*",
+          "name": "EmailAddress?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:EmailAddress?" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Image*",
+          "name": "Image*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Image" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Image?",
+          "name": "Image?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Image" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Image?*",
+          "name": "Image?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Image?" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Money*",
+          "name": "Money*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Money" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Money?",
+          "name": "Money?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Money" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Money?*",
+          "name": "Money?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Money?" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber*",
+          "name": "PhoneNumber*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber?",
+          "name": "PhoneNumber?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber?*",
+          "name": "PhoneNumber?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:PhoneNumber?" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Percent*",
+          "name": "Percent*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Percent" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Percent?",
+          "name": "Percent?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:Percent" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:Percent?*",
+          "name": "Percent?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:Percent?" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:WebAddress*",
+          "name": "WebAddress*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress" }
+        },
+        {
+          "__isNullableType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:WebAddress?",
+          "name": "WebAddress?",
+          "underlyingType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress" }
+        },
+        {
+          "id": "Microsoft.LightSwitch.Extensions:WebAddress?*",
+          "name": "WebAddress?*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "Microsoft.LightSwitch.Extensions:WebAddress?" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:EmailAddress",
+          "name": "EmailAddress",
+          "underlyingType": { "__id": ":String" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Image",
+          "name": "Image",
+          "underlyingType": { "__id": ":Binary" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Money",
+          "name": "Money",
+          "underlyingType": { "__id": ":Decimal" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:PhoneNumber",
+          "name": "PhoneNumber",
+          "underlyingType": { "__id": ":String" }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:Percent",
+          "name": "Percent",
+          "underlyingType": { "__id": ":Decimal" },
+          ":@DecimalConstraint":
+          {
+            "scale": 9
+          }
+        },
+        {
+          "__isSemanticType": 1,
+          "id": "Microsoft.LightSwitch.Extensions:WebAddress",
+          "name": "WebAddress",
+          "underlyingType": { "__id": ":String" }
+        }
+      ]
+    },
+    {
+      "homeScreen": { "__id": "BrowsevmControls" },
+      "id": "!module",
+      "name": "LightSwitchApplication.AzureVM.HTMLClient",
+      "logo": "/Content/Images/logo.png",
+      "targetPlatform": "MobileWeb",
+      "version": "1.0.0.0",
+      "shell": { "__id": ":HTMLShell" },
+      "theme": { "__id": ":HTMLTheme" },
+      ":@ModuleNamespace": { "namespace": "LightSwitchApplication" },
+      ":@Partial": { "isPrimary": true },
+      "globalItems":
+      [
+        {
+          "id": "DataWorkspace",
+          "name": "DataWorkspace",
+          "members":
+          [
+            {
+              "id": "DataWorkspace/Members[AzureVMData]",
+              "name": "AzureVMData",
+              "entityContainer": { "__id": "AzureVMData" }
+            }
+          ]
+        },
+        {
+          "id": "LightSwitchServiceApplicationGroup",
+          "name": "LightSwitchServiceApplicationGroup",
+          ":@SharePointEnabled": { }
+        },
+        {
+          "id": "vmControl*",
+          "name": "vmControl*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "vmControl" }
+        },
+        {
+          "id": "CollectionView$vmControl",
+          "name": "CollectionView$vmControl",
+          "kind": "CollectionView",
+          "elementType": { "__id": "vmControl" },
+          "methods":
+          [
+            {
+              "id": "CollectionView$vmControl/Methods[addNew]",
+              "name": "addNew",
+              "returnType": { "__id": "vmControl" }
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[addAndEditNew]",
+              "name": "addAndEditNew",
+              "returnType": { "__id": "vmControl" }
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[editSelected]",
+              "name": "editSelected"
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[deleteSelected]",
+              "name": "deleteSelected"
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[removeSelected]",
+              "name": "removeSelected"
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[refresh]",
+              "name": "refresh"
+            },
+            {
+              "id": "CollectionView$vmControl/Methods[viewSelected]",
+              "name": "viewSelected"
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "CollectionView$vmControl/Properties[selectedItem]",
+              "name": "selectedItem",
+              "propertyType": { "__id": "vmControl" }
+            }
+          ]
+        },
+        {
+          "__isEntityType": 1,
+          ":@SummaryProperty": { "property": { "__id": "vmControl/Properties[vmName]" } },
+          "id": "vmControl",
+          "name": "vmControl",
+          "methods":
+          [
+            {
+              "id": "vmControl/Methods[deleteEntity]",
+              "name": "deleteEntity"
+            },
+            {
+              "id": "vmControl/Methods[edit]",
+              "name": "edit"
+            },
+            {
+              "id": "vmControl/Methods[view]",
+              "name": "view"
+            }
+          ],
+          "properties":
+          [
+            {
+              "__isKeyProperty": 1,
+              "id": "vmControl/Properties[ID]",
+              "name": "ID",
+              "isReadOnly": true,
+              "propertyType": { "__id": ":Int32" },
+              ":@Hidden": { },
+              ":@Required": { },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "vmControl/Properties[vmName]",
+              "name": "vmName",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              }
+            },
+            {
+              "id": "vmControl/Properties[StartTime]",
+              "name": "StartTime",
+              "propertyType": { "__id": ":DateTime?" },
+              ":@DateTimeConstraint":
+              {
+                "kind": "Unspecified",
+                "precision": 3,
+                "preserveSeconds": true
+              },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "vmControl/Properties[RequestedBy]",
+              "name": "RequestedBy",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              }
+            },
+            {
+              "id": "vmControl/Properties[vmServiceName]",
+              "name": "vmServiceName",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              }
+            },
+            {
+              "id": "vmControl/Properties[AzureSubscription]",
+              "name": "AzureSubscription",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              }
+            },
+            {
+              "id": "vmControl/Properties[RequestedStoptime]",
+              "name": "RequestedStoptime",
+              "propertyType": { "__id": ":DateTime?" },
+              ":@DateTimeConstraint":
+              {
+                "kind": "Unspecified",
+                "precision": 3,
+                "preserveSeconds": true
+              },
+              ":@NotSearchable": { }
+            }
+          ]
+        },
+        {
+          "id": "AzureVMData",
+          "name": "AzureVMData",
+          ":@Partial": { "isPrimary": true },
+          "entitySets":
+          [
+            {
+              "id": "AzureVMData/Members[vmControls]",
+              "name": "vmControls",
+              "canDelete": true,
+              "canInsert": true,
+              "canUpdate": true,
+              "elementType": { "__id": "vmControl" },
+              "entityType": { "__id": "vmControl" }
+            }
+          ],
+          "queryOperations":
+          [
+            {
+              "id": "AzureVMData/Members[vmControls_Single]",
+              "name": "vmControls_Single",
+              "elementType": { "__id": "vmControl" },
+              "query": { "__id": "AzureVMData/Members[vmControls_Single]" },
+              "returnType": { "__id": "vmControl" },
+              "source":
+              {
+                "member": { "__id": "AzureVMData/Members[vmControls]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "AzureVMData/Members[vmControls_Single]/Parameters[ID]",
+                  "name": "ID",
+                  "parameterType": { "__id": ":Int32?" }
+                }
+              ]
+            },
+            {
+              "id": "AzureVMData/Members[vmControls_SingleOrDefault]",
+              "name": "vmControls_SingleOrDefault",
+              "elementType": { "__id": "vmControl" },
+              "query": { "__id": "AzureVMData/Members[vmControls_SingleOrDefault]" },
+              "returnType": { "__id": "vmControl" },
+              "source":
+              {
+                "member": { "__id": "AzureVMData/Members[vmControls]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "AzureVMData/Members[vmControls_SingleOrDefault]/Parameters[ID]",
+                  "name": "ID",
+                  "parameterType": { "__id": ":Int32?" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "displayName": "Add New Virtual Machine",
+          "id": "AddVirtualMachine",
+          "name": "AddVirtualMachine",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "Add New Virtual Machine",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Details",
+                    "name": "Details",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "columns",
+                        "name": "columns",
+                        "kind": "Details",
+                        "view": { "__id": ":ColumnsLayout" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "AddVirtualMachine/Properties[vmControl]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "left",
+                            "name": "left",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Virtual Machine Name",
+                                "name": "vmName",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Start Time",
+                                "name": "StartTime",
+                                "isHidden": true,
+                                "kind": "Value",
+                                "view": { "__id": ":DateTimePicker" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[StartTime]" }
+                                }
+                              },
+                              {
+                                "displayName": "Requested By",
+                                "name": "RequestedBy",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
+                                }
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          },
+                          {
+                            "displayName": "right",
+                            "name": "right",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Azure Service Name",
+                                "name": "vmServiceName",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Azure Subscription",
+                                "name": "AzureSubscription",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
+                                }
+                              },
+                              {
+                                "displayName": "Requested Stop Time",
+                                "name": "RequestedStoptime",
+                                "kind": "Value",
+                                "view": { "__id": ":DateTimePicker" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
+                                }
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ],
+            "propertySources":
+            [
+              {
+                "property": { "__id": ":Screen/Properties[ScreenType]" },
+                "value": "Edit"
+              },
+              {
+                "property": { "__id": ":Screen/Properties[ShowAsDialog]" },
+                "value": true
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "AddVirtualMachine/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "AddVirtualMachine/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "AddVirtualMachine/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "AddVirtualMachine/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "AddVirtualMachine/Properties[vmControl]",
+              "name": "vmControl",
+              "elementType": { "__id": "vmControl" },
+              "propertyType": { "__id": "vmControl" },
+              ":@IsParameter": { }
+            }
+          ]
+        },
+        {
+          "displayName": "Azure Virtual Machine Controller",
+          "id": "BrowsevmControls",
+          "name": "BrowsevmControls",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "Azure Virtual Machine Controller",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "vm Control List",
+                    "name": "vmControlList",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "vm Controls",
+                        "name": "vmControl",
+                        "kind": "Collection",
+                        "view": { "__id": ":Table" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowsevmControls/Properties[vmControls]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "vm Control",
+                            "name": "RowTemplate",
+                            "kind": "Details",
+                            "view": { "__id": ":TableRowLayout" },
+                            "dataSource":
+                            {
+                              "links":
+                              [
+                              ]
+                            },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Virtual Machine Name",
+                                "name": "vmName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Start Time",
+                                "name": "StartTime",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[StartTime]" }
+                                }
+                              },
+                              {
+                                "displayName": "Requested By",
+                                "name": "RequestedBy",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
+                                }
+                              },
+                              {
+                                "displayName": "Azure Service Name",
+                                "name": "vmServiceName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Azure Subscription",
+                                "name": "AzureSubscription",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
+                                }
+                              },
+                              {
+                                "displayName": "Requested Stop Time",
+                                "name": "RequestedStoptime",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "commandItems":
+                    [
+                      {
+                        "displayName": "Add New VM",
+                        "name": "AddvmControl",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showAddVirtualMachine]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowsevmControls/Properties[vmControls]" } },
+                              ":@CreateNewEntity":
+                              {
+                                "targetParameter": { "__id": "!module/Methods[showAddVirtualMachine]/Parameters[vmControl]" }
+                              }
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-add"
+                          }
+                        ]
+                      },
+                      {
+                        "displayName": "Edit VM",
+                        "name": "EditvmControl",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showEditVirtualMachine]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowsevmControls/Properties[vmControls]" } },
+                              "arguments":
+                              [
+                                {
+                                  "parameter": { "__id": "!module/Methods[showEditVirtualMachine]/Parameters[vmControl]" },
+                                  "value":
+                                  {
+                                    "links":
+                                    [
+                                      {
+                                        "member": { "__id": "BrowsevmControls/Properties[vmControls]" }
+                                      },
+                                      {
+                                        "member": { "__id": "CollectionView$vmControl/Properties[selectedItem]" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-edit"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "propertySources":
+                [
+                  {
+                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "BrowsevmControls/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "BrowsevmControls/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "BrowsevmControls/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "BrowsevmControls/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "BrowsevmControls/Properties[vmControls]",
+              "name": "vmControls",
+              "pageSize": 45,
+              "elementType": { "__id": "vmControl" },
+              "propertyType": { "__id": "CollectionView$vmControl" },
+              "query":
+              {
+                "id": "BrowsevmControls/Properties[vmControls]/Query",
+                "name": "vmControlsQuery",
+                "elementType": { "__id": "vmControl" },
+                "returnType": { "__id": "vmControl*" },
+                "source":
+                {
+                  "member": { "__id": "AzureVMData/Members[vmControls]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "BrowsevmControls/Properties[vmControls]/Query" }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Edit Virtual Machine",
+          "id": "EditVirtualMachine",
+          "name": "EditVirtualMachine",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[AzureVMData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "Root Content Item",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Details",
+                    "name": "Details",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "columns",
+                        "name": "columns",
+                        "kind": "Details",
+                        "view": { "__id": ":ColumnsLayout" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "EditVirtualMachine/Properties[vmControl]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "left",
+                            "name": "left",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Virtual Machine Name",
+                                "name": "vmName",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Start Time",
+                                "name": "StartTime",
+                                "isHidden": true,
+                                "kind": "Value",
+                                "view": { "__id": ":DateTimePicker" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[StartTime]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":DateTimePicker/Properties[MinimumYear]" },
+                                    "value": 2014
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "Requested By",
+                                "name": "RequestedBy",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedBy]" }
+                                }
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          },
+                          {
+                            "displayName": "right",
+                            "name": "right",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Azure Service Name",
+                                "name": "vmServiceName",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[vmServiceName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Azure Subscription",
+                                "name": "AzureSubscription",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[AzureSubscription]" }
+                                }
+                              },
+                              {
+                                "displayName": "Requested Stop Time",
+                                "name": "RequestedStoptime",
+                                "kind": "Value",
+                                "view": { "__id": ":DateTimePicker" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vmControl/Properties[RequestedStoptime]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":DateTimePicker/Properties[MinimumYear]" },
+                                    "value": 2014
+                                  }
+                                ]
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ],
+            "propertySources":
+            [
+              {
+                "property": { "__id": ":Screen/Properties[ScreenType]" },
+                "value": "Edit"
+              },
+              {
+                "property": { "__id": ":Screen/Properties[ShowAsDialog]" },
+                "value": true
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "EditVirtualMachine/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "EditVirtualMachine/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "EditVirtualMachine/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "EditVirtualMachine/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "EditVirtualMachine/Properties[vmControl]",
+              "name": "vmControl",
+              "elementType": { "__id": "vmControl" },
+              "propertyType": { "__id": "vmControl" },
+              ":@IsParameter": { }
+            }
+          ]
+        }
+      ],
+      "methods":
+      [
+        {
+          "id": "!module/Methods[showAddVirtualMachine]",
+          "name": "showAddVirtualMachine",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "AddVirtualMachine" } },
+          "parameters":
+          [
+            {
+              "id": "!module/Methods[showAddVirtualMachine]/Parameters[vmControl]",
+              "name": "vmControl",
+              "parameterType": { "__id": "vmControl" }
+            }
+          ]
+        },
+        {
+          "id": "!module/Methods[showBrowsevmControls]",
+          "name": "showBrowsevmControls",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowsevmControls" } }
+        },
+        {
+          "id": "!module/Methods[showEditVirtualMachine]",
+          "name": "showEditVirtualMachine",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "EditVirtualMachine" } },
+          "parameters":
+          [
+            {
+              "id": "!module/Methods[showEditVirtualMachine]/Parameters[vmControl]",
+              "name": "vmControl",
+              "parameterType": { "__id": "vmControl" }
+            }
+          ]
         }
       ]
     }

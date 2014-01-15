@@ -14,7 +14,7 @@ namespace LightSwitchApplication
 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.0.0.0")]
     public sealed partial class Application
-        : global::Microsoft.LightSwitch.Framework.Server.ServerApplication<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass, global::LightSwitchApplication.DataWorkspace>
+        : global::Microsoft.LightSwitch.Framework.Server.SharePointApplication<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass, global::LightSwitchApplication.DataWorkspace>
     {
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24,6 +24,15 @@ namespace LightSwitchApplication
 
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void Application_Initialize();
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected override string ClientName
+        {
+            get
+            {
+                return "HTMLClient";
+            }
+        }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public static new global::LightSwitchApplication.Application Current

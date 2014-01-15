@@ -3,7 +3,7 @@
   <parameter name="AzureVM_IisWebApplication" description="IIS Web Application content location" defaultValue="Default Web Site/AzureVM" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\AzureVM\\AzureVM\\bin\\Debug\\app\.publish\\$" />
   </parameter>
-  <parameter name="AzureVMData" description="Configure the ConnectionString" defaultValue="Data Source=kaau940a1n.database.windows.net;Initial Catalog=AzureVM;Persist Security Info=True;User ID=azurevm;Password=Denali@2011" tags="SqlConnectionString">
+  <parameter name="AzureVMData" description="Configure the ConnectionString" defaultValue="data source=kaau940a1n.database.windows.net;initial catalog=AzureVM;persist security info=True;user id=azurevm;password=Denali@2011" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/connectionStrings/add[@name='AzureVMData']/@connectionString" />
   </parameter>
 </parameters>
