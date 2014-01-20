@@ -202,6 +202,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSources\AzureVMData\vmControl.lsml.cs">
+      <DependentUpon>vmControls.lsml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\AzureVMData\_AzureVMDataService.lsml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharePointLaunch.aspx.cs">
       <DependentUpon>SharePointLaunch.aspx</DependentUpon>

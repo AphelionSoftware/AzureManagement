@@ -2933,7 +2933,6 @@
                               {
                                 "displayName": "Start Time",
                                 "name": "StartTime",
-                                "isHidden": true,
                                 "kind": "Value",
                                 "view": { "__id": ":DateTimePicker" },
                                 "dataSource":
@@ -2951,6 +2950,7 @@
                               {
                                 "displayName": "Requested By",
                                 "name": "RequestedBy",
+                                "isHidden": true,
                                 "kind": "Value",
                                 "view": { "__id": ":TextBox" },
                                 "dataSource":

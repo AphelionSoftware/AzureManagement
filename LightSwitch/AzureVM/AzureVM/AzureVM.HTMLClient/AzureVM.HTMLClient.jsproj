@@ -67,6 +67,12 @@
     <Content Include="Content\Images\user-splash-screen01.png" />
     <Content Include="Content\Web.config" />
     <Content Include="packages.config" />
+    <Content Include="Screens\BrowsevmControls.lsml.js">
+      <DependentUpon>BrowsevmControls.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\EditVirtualMachine.lsml.js">
+      <DependentUpon>EditVirtualMachine.lsml</DependentUpon>
+    </Content>
     <Content Include="Scripts\datajs-1.1.1.js" />
     <Content Include="Scripts\datajs-1.1.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -81,6 +87,10 @@
     <Content Include="Scripts\msls-2.0.0.min.js" />
     <Content Include="Scripts\winjs-1.0.js" />
     <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="UserCode\vmControl.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ServiceMetadataReference Include="..\AzureVM.Server\AzureVM.Server.csproj">

@@ -66,7 +66,6 @@
                 </ContentItem>
                 <ContentItem
                   Name="StartTime"
-                  IsHidden="True"
                   Kind="Value"
                   DataType=":DateTime?">
                   <ContentItem.DataSource>
@@ -92,6 +91,7 @@
                 </ContentItem>
                 <ContentItem
                   Name="RequestedBy"
+                  IsHidden="True"
                   Kind="Value"
                   DataType=":String">
                   <ContentItem.DataSource>
