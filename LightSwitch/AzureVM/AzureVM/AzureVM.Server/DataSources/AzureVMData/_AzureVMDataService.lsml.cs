@@ -41,12 +41,56 @@ namespace LightSwitchApplication
 
         partial void vmControls_Inserting(vmControl entity)
         {
-            entity.RequestedBy = this.Application.User.PersonId;// Environment.UserName;
+            try
+            {
+                if (this.Application.User.PersonId == null)
+                {
+                    entity.RequestedBy = this.Application.User.PersonId;
+
+                }
+                else if (Environment.UserName == null)
+                {
+                    entity.RequestedBy = Environment.UserName;
+
+                }
+                else
+                {
+                    entity.RequestedBy = "External User";
+                }
+
+            }
+            catch (System.Exception ex ) {
+                entity.RequestedBy = "External User error: " + ex.InnerException;
+             
+            }
+
         }
 
         partial void vmControls_Updating(vmControl entity)
         {
-            entity.RequestedBy = this.Application.User.PersonId;// Environment.UserName;
+            try
+            {
+                if (this.Application.User.PersonId == null)
+                {
+                    entity.RequestedBy = this.Application.User.PersonId;
+
+                }
+                else if (Environment.UserName == null)
+                {
+                    entity.RequestedBy = Environment.UserName;
+
+                }
+                else
+                {
+                    entity.RequestedBy = "External User";
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                entity.RequestedBy = "External User error: " + ex.InnerException;
+
+            }
         }
     }
 }

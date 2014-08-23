@@ -24,11 +24,19 @@
           <ContentItem
             Name="vmControlList"
             Kind="Group">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="VM Control List" />
+            </ContentItem.Attributes>
             <ContentItem
               Name="vmControl"
               Kind="Collection"
               DataType="CollectionView$vmControl"
               View="Microsoft.LightSwitch.MobileWeb:Table">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="VM Controls" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>

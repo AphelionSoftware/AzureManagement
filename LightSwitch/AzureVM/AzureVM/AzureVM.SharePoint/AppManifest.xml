@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--Created:0f94c101-eca2-421b-9ee1-671ad586290e-->
-<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" Name="AzureVM" ProductID="{3b45b135-9851-4547-af48-d7d603b301da}" Version="1.0.2.0" SharePointMinVersion="15.0.0.0">
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" Name="AzureVM" ProductID="{3b45b135-9851-4547-af48-d7d603b301da}" Version="1.0.6.0" SharePointMinVersion="15.0.0.0">
   <Properties>
     <Title>AzureVM</Title>
     <StartPage>~remoteAppUrl/SharePointLaunch.aspx?{StandardTokens}</StartPage>

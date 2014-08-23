@@ -22,7 +22,7 @@
     <ApplicationServerType>SharePointAutoHost</ApplicationServerType>
     <AuthenticationType>SharePoint</AuthenticationType>
     <ApplicationName>AzureVM</ApplicationName>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>
@@ -56,8 +56,11 @@
     <RequireSecureConnection>True</RequireSecureConnection>
     <DebugSharePointAuthenticationType>AccessControlService</DebugSharePointAuthenticationType>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <LightSwitchPublishVersion>v2.2</LightSwitchPublishVersion>
+    <LightSwitchPublishVersion>v2.1</LightSwitchPublishVersion>
     <SharePointAuthenticationType>AccessControlService</SharePointAuthenticationType>
+    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
+    <PublishLocation>Publish</PublishLocation>
+    <DefaultDatabaseName>AzureVM</DefaultDatabaseName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug</OutputPath>
