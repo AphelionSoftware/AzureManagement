@@ -1,7 +1,10 @@
 ﻿
 
 function UpdateProject( $sln, $proj, $DB ) {
-    $dte.Solution.Open($sln) | Out-Null;
+$dte = New-Object -comobject "VisualStudio.DTE";
+    Write-Host "Solution $sln"
+    Write-Host "Project $proj"
+    $dte.Solution.Open($sln) ;
     $dte.MainWindow | %{$_.gettype().InvokeMember("Visible","SetProperty",$null,$_,$true)};
     #| Out-Null Piping the output forces Powershell to wait to complete
 
@@ -53,18 +56,15 @@ function UpdateProject( $sln, $proj, $DB ) {
 }
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln", "Aphelion.Meerkat.DB", "Meerkat"); 
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -db "Meerkat"; 
 #}
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln", "Aphelion.MeerkatErrors.DB", "MeerkatErrors");
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
 #}
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln", "Aphelion.MeerkatStaging.DB", "MeerkatStaging"); 
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -db "MeerkatStaging"; 
 #}
 
 
