@@ -56,15 +56,15 @@ $dte = New-Object -comobject "VisualStudio.DTE";
 }
 
 #Start-Job { 
-UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -db "Meerkat"; 
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -db "Meerkat"; 
 #}
 
 #Start-Job { 
-UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
 #}
 
 #Start-Job { 
-UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -db "MeerkatStaging"; 
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -db "MeerkatStaging"; 
 #}
 
 

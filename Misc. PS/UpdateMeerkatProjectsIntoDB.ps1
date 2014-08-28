@@ -53,18 +53,15 @@ function UpdateProject( $sln, $proj, $DB ) {
 }
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln", "Aphelion.Meerkat.DB", "Meerkat"); 
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -DB "Meerkat"
 #}
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln", "Aphelion.MeerkatErrors.DB", "MeerkatErrors");
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -DB "MeerkatErrors"
 #}
 
 #Start-Job { 
-UpdateProject( 
-"C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln", "Aphelion.MeerkatStaging.DB", "MeerkatStaging"); 
+UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -DB "MeerkatStaging"
 #}
 
 
