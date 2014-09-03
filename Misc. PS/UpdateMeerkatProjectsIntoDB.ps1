@@ -1,7 +1,12 @@
 ﻿
 
 function UpdateProject( $sln, $proj, $DB ) {
+
+$dte = New-Object -comobject "VisualStudio.DTE";
+    Write-Host "Solution $sln"
+    Write-Host "Project $proj"
     $dte.Solution.Open($sln) | Out-Null;
+    Start-Sleep 4;
     $dte.MainWindow | %{$_.gettype().InvokeMember("Visible","SetProperty",$null,$_,$true)};
     #| Out-Null Piping the output forces Powershell to wait to complete
 
@@ -14,7 +19,7 @@ function UpdateProject( $sln, $proj, $DB ) {
         Try {
             $dte.ExecuteCommand("Tools.SSDTNewSchemaComparison", "/ProviderType ProjectBased /ProjectName $proj /ProviderType ConnectionBased /ConnectionString ""Data Source=.\sql2012;Initial Catalog=$DB;Integrated Security=True"" ") | ForEach-Object {Start-Process $_} | Wait-Process ;
             $tries = 100;
-            Sleep-Start 30;
+            Start-Sleep 10;
             
             $dte.ExecuteCommand("SQL.SSDTSchemaCompareCompare") | Out-Null;
 
@@ -52,16 +57,16 @@ function UpdateProject( $sln, $proj, $DB ) {
     }
 }
 
+
 #Start-Job { 
-UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -DB "Meerkat"
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.Meerkat.DB.sln" -proj "Aphelion.Meerkat.DB" -db "Meerkat"; 
 #}
 
 #Start-Job { 
-UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -DB "MeerkatErrors"
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
 #}
 
 #Start-Job { 
-UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -DB "MeerkatStaging"
+UpdateProject -sln "D:\Dropbox\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatStaging.DB\Aphelion.MeerkatStaging.DB.sln" -proj "Aphelion.MeerkatStaging.DB" -db "MeerkatStaging"; 
 #}
-
 
