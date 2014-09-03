@@ -4,3 +4,5 @@ cd\GitHub\DataLoadFrameworks
 "C:\Program Files (x86)\Git\bin\git.exe" fetch --progress "--all" 
 cd\GitHub\AzureManagement
 "C:\Program Files (x86)\Git\bin\git.exe" fetch --progress "--all" 
+cd\GitHub\Pagatech
+"C:\Program Files (x86)\Git\bin\git.exe" fetch --progress "--all" 

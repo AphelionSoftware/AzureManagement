@@ -5,7 +5,20 @@ $dte = New-Object -comobject "VisualStudio.DTE";
     Write-Host "Solution $sln"
     Write-Host "Project $proj"
     $dte.Solution.Open($sln) ;
-    $dte.MainWindow | %{$_.gettype().InvokeMember("Visible","SetProperty",$null,$_,$true)};
+    $tries = 0
+    While ($tries -lt 3)  {
+    try {
+        $dte.MainWindow | %{$_.gettype().InvokeMember("Visible","SetProperty",$null,$_,$true)};
+        $tries = 100;
+            
+    }
+    Catch {
+        Write-Host "Waiting 5 seconds for solution to open"
+            Start-Sleep 5
+     }
+    Finally {
+        $tries++
+   }
     #| Out-Null Piping the output forces Powershell to wait to complete
 
     Write-Host "Waiting 15 seconds for project to open"
@@ -60,7 +73,7 @@ UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.Meerkat.DB\Aphelion.
 #}
 
 #Start-Job { 
-UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
+#UpdateProject -sln "C:\GitHub\Meerkat\SQL Solution\Aphelion.MeerkatErrors.DB\Aphelion.MeerkatErrors.DB.sln" -proj "Aphelion.MeerkatErrors.DB" -db "MeerkatErrors";
 #}
 
 #Start-Job { 
